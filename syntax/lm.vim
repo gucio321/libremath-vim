@@ -3,100 +3,100 @@ if exists("b:current_syntax")
 endif
 
 " parenthesis sanity checker
-syn region xmathZone	matchgroup=Delimiter start="(" matchgroup=Delimiter end=")" transparent contains=ALLBUT,xmathError,xmathBraceError,xmathCurlyError
-syn region xmathZone	matchgroup=Delimiter start="{" matchgroup=Delimiter end="}" transparent contains=ALLBUT,xmathError,xmathBraceError,xmathParenError
-syn region xmathZone	matchgroup=Delimiter start="\[" matchgroup=Delimiter end="]" transparent contains=ALLBUT,xmathError,xmathCurlyError,xmathParenError
+syn region lmZone	matchgroup=Delimiter start="(" matchgroup=Delimiter end=")" transparent contains=ALLBUT,lmError,lmBraceError,lmCurlyError
+syn region lmZone	matchgroup=Delimiter start="{" matchgroup=Delimiter end="}" transparent contains=ALLBUT,lmError,lmBraceError,lmParenError
+syn region lmZone	matchgroup=Delimiter start="\[" matchgroup=Delimiter end="]" transparent contains=ALLBUT,lmError,lmCurlyError,lmParenError
 "
-"syn region xmathZone	matchgroup=Delimiter start="lbrace" matchgroup=Delimiter end="rbrace" transparent contains=xmathRbraceError
+"syn region lmZone	matchgroup=Delimiter start="lbrace" matchgroup=Delimiter end="rbrace" transparent contains=lmRbraceError
 "syn match  Error	"rbrace"
-"syn match  xmathRbraceError	"[rbrace]"	contained
+"syn match  lmRbraceError	"[rbrace]"	contained
 "
-syn match  xmathError	"[)\]}]"
-syn match  xmathBraceError	"[)}]"	contained
-syn match  xmathCurlyError	"[)\]]"	contained
-syn match  xmathParenError	"[\]}]"	contained
-syn match  xmathComma	"[,;:]"
-syn match  xmathComma	"\.\.\.$"
+syn match  lmError	"[)\]}]"
+syn match  lmBraceError	"[)}]"	contained
+syn match  lmCurlyError	"[)\]]"	contained
+syn match  lmParenError	"[\]}]"	contained
+syn match  lmComma	"[,;:]"
+syn match  lmComma	"\.\.\.$"
 
-" A bunch of useful xmath keywords
+" A bunch of useful lm keywords
 syn case ignore
 
 " ###############################################################################################################3
-syn keyword xmathFuncCmd	newline	over	color	bold	underline	ital	color
-"syn keyword xmathFuncCmd	
+syn keyword lmFuncCmd	newline	over	color	bold	underline	ital	color
+"syn keyword lmFuncCmd	
 "logic operators
-syn keyword xmathStatement	and	or	drarrow	dlarrow	dlrarrow 	neg	exists	forall
-"nie dziala - interpretuje tylko pierwszy symbol: syn match   xmathCmd	"+"	"="
+syn keyword lmStatement	and	or	drarrow	dlarrow	dlrarrow 	neg	exists	forall
+"nie dziala - interpretuje tylko pierwszy symbol: syn match   lmCmd	"+"	"="
 "dzialania arytmetyczne
-syn keyword xmathFunc	cdot	div	plusminus	minusplus	sqrt	nroot	divides	ndivides
+syn keyword lmFunc	cdot	div	plusminus	minusplus	sqrt	nroot	divides	ndivides
 "set operations
-syn keyword xmathFunc	union	intersection	setminus	slash	in 	ni 	notin	subset	subseteq	supset	supseteq	nsubset	nsubseteq	nsupset	nsupseteq
+syn keyword lmFunc	union	intersection	setminus	slash	in 	ni 	notin	subset	subseteq	supset	supseteq	nsubset	nsubseteq	nsupset	nsupseteq
 "zmienne z % na poczatku
-syn keyword xmathConditional	emptyset	setn	setz	setc	setq	setr
+syn keyword lmConditional	emptyset	setn	setz	setc	setq	setr
 "syn keyword   xMaciek	
-syn match   xmathAlpha             "%[a-zA-Z]*"
-"syn match   xmathAlpha             "%DELTA"
+syn match   lmAlpha             "%[a-zA-Z]*"
+"syn match   lmAlpha             "%DELTA"
 syn keyword xMaciek	langle	rangle	lbrace 	rbrace
 " ###############################################################################################################3
 
 "syn case match
 
-" Labels (supports xmath's goto)
-syn match   xmathLabel	 "^\s*<[a-zA-Z_][a-zA-Z0-9]*>"
+" Labels (supports lm's goto)
+syn match   lmLabel	 "^\s*<[a-zA-Z_][a-zA-Z0-9]*>"
 
 " String and Character constants
 " Highlight special characters (those which have a backslash) differently
-syn match   xmathSpecial	contained "\\\d\d\d\|\\."
-syn region  xmathString	start=+"+  skip=+\\\\\|\\"+  end=+"+ contains=xmathSpecial,@Spell
-syn match   xmathCharacter	"'[^\\]'"
-syn match   xmathSpecialChar	"'\\.'"
+syn match   lmSpecial	contained "\\\d\d\d\|\\."
+syn region  lmString	start=+"+  skip=+\\\\\|\\"+  end=+"+ contains=lmSpecial,@Spell
+syn match   lmCharacter	"'[^\\]'"
+syn match   lmSpecialChar	"'\\.'"
 
-syn match   xmathNumber	"-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
+syn match   lmNumber	"-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
 
 " Comments:
-" xmath supports #...  (like Unix shells)
+" lm supports #...  (like Unix shells)
 "       and      #{ ... }# comment blocks
-syn cluster xmathCommentGroup	contains=xmathString,xmathTodo,@Spell
-syn keyword xmathTodo contained	COMBAK	DEBUG	FIXME	Todo	TODO	XXX
-syn match   xmathComment	"%%.*$"		contains=@xmathCommentGroup
-syn region  xmathCommentBlock	start="#{" end="}#"	contains=@xmathCommentGroup
+syn cluster lmCommentGroup	contains=lmString,lmTodo,@Spell
+syn keyword lmTodo contained	COMBAK	DEBUG	FIXME	Todo	TODO	XXX
+syn match   lmComment	"%%.*$"		contains=@lmCommentGroup
+syn region  lmCommentBlock	start="#{" end="}#"	contains=@lmCommentGroup
 
 " synchronizing
-syn sync match xmathSyncComment	grouphere xmathCommentBlock "#{"
-syn sync match xmathSyncComment	groupthere NONE "}#"
+syn sync match lmSyncComment	grouphere lmCommentBlock "#{"
+syn sync match lmSyncComment	groupthere NONE "}#"
 
 " Define the default highlighting.
-if !exists("skip_xmath_syntax_inits")
+if !exists("skip_lm_syntax_inits")
 
-  hi def link xmathBraceError	xmathError
-  hi def link xmathCommentBlock	xmathComment
-  hi def link xmathCurlyError	xmathError
-  hi def link xmathParenError	xmathError
-"  hi def link xmathRbraceError	xmathError
-  hi def link xmathFuncCmd	Statement
-  hi def link xmathStatement	Underlined
-  hi def link xmathCmd	Type
-  hi def link xmathFunc	Identifier
-  hi def link xmathConditional	Todo
-  hi def link xmathAlpha	Todo
-  hi def link xmathRepeat	Repeat
+  hi def link lmBraceError	lmError
+  hi def link lmCommentBlock	lmComment
+  hi def link lmCurlyError	lmError
+  hi def link lmParenError	lmError
+"  hi def link lmRbraceError	lmError
+  hi def link lmFuncCmd	Statement
+  hi def link lmStatement	Underlined
+  hi def link lmCmd	Type
+  hi def link lmFunc	Identifier
+  hi def link lmConditional	Todo
+  hi def link lmAlpha	Todo
+  hi def link lmRepeat	Repeat
   hi def link xMaciek	Special
 
   " The default methods for highlighting.  Can be overridden later
-  hi def link xmathCharacter	Character
-  hi def link xmathComma	Delimiter
-  hi def link xmathComment	Comment
-  hi def link xmathCommentBlock	Comment
-  hi def link xmathError	Error
-  hi def link xmathLabel	PreProc
-  hi def link xmathNumber	Number
-  hi def link xmathSpecial	Type
-  hi def link xmathSpecialChar	SpecialChar
-  hi def link xmathString	String
-  hi def link xmathTodo	Todo
+  hi def link lmCharacter	Character
+  hi def link lmComma	Delimiter
+  hi def link lmComment	Comment
+  hi def link lmCommentBlock	Comment
+  hi def link lmError	Error
+  hi def link lmLabel	PreProc
+  hi def link lmNumber	Number
+  hi def link lmSpecial	Type
+  hi def link lmSpecialChar	SpecialChar
+  hi def link lmString	String
+  hi def link lmTodo	Todo
 
 endif
 
-let b:current_syntax = "xmath"
+let b:current_syntax = "lm"
 
 " vim: ts=17
