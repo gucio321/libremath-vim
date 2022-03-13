@@ -2,7 +2,8 @@
 
 ## DESCRIPTION
 
-Libremath-vim is a syntax highlighting for LibreOffice Math formula language.
+Libremath-vim is a syntax highlighting for [Vim](https://github.com/vim) (and VIM-based editors)
+of LibreOffice Math formula language.
 
 ## DOCUMENTATION AND COPYRIGHT NOTES
 
