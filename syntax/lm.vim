@@ -25,18 +25,18 @@ syn case ignore
 syn keyword lmFuncCmd	newline	over	color	bold	underline	ital	color
 "syn keyword lmFuncCmd	
 "logic operators
-syn keyword lmStatement	and	or	drarrow	dlarrow	dlrarrow 	neg	exists	forall
+syn keyword lmStatement	and	or	drarrow	dlarrow	dlrarrow 	neg	exists	forall         from    to
 "nie dziala - interpretuje tylko pierwszy symbol: syn match   lmCmd	"+"	"="
 "dzialania arytmetyczne
 syn keyword lmFunc	cdot	div	plusminus	minusplus	sqrt	nroot	divides	ndivides
 "set operations
-syn keyword lmFunc	union	intersection	setminus	slash	in 	ni 	notin	subset	subseteq	supset	supseteq	nsubset	nsubseteq	nsupset	nsupseteq
+syn keyword lmFunc	union	intersection	setminus	slash	in 	ni 	notin	subset	subseteq	supset	supseteq	nsubset	nsubseteq	nsupset	nsupseteq       vec     widehat         csub    int
 "zmienne z % na poczatku
-syn keyword lmConditional	emptyset	setn	setz	setc	setq	setr
+syn keyword lmConditional	emptyset	setn	setz	setc	setq	setra    red     blue    green   black
 "syn keyword   xMaciek	
 syn match   lmAlpha             "%[a-zA-Z]*"
 "syn match   lmAlpha             "%DELTA"
-syn keyword xMaciek	langle	rangle	lbrace 	rbrace
+syn keyword xMaciek	langle	rangle	lbrace 	rbrace     lline   rline
 " ###############################################################################################################3
 
 "syn case match
